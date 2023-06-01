@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://levels/level_items/items_animated_sprite.tres" type="SpriteFrames" id=1]
+[ext_resource path="res://levels/level_items/items/heart.gd" type="Script" id=2]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 5.0
+
+[node name="heart" type="Area2D"]
+scale = Vector2( 0.8, 0.8 )
+collision_layer = 8
+collision_mask = 8
+script = ExtResource( 2 )
+score_value = 5
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( -2.38419e-07, -2.38419e-07 )
+scale = Vector2( 0.679688, 0.679688 )
+frames = ExtResource( 1 )
+animation = "heart"
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[connection signal="body_entered" from="." to="." method="_on_shield_body_entered"]

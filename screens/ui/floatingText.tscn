@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://res/themes/theme.tres" type="Theme" id=1]
+[ext_resource path="res://res/fonts/Freaky Witches.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://screens/ui/floatingText.gd" type="Script" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 40
+use_filter = true
+font_data = ExtResource( 2 )
+
+[node name="FloatingText" type="Position2D"]
+scale = Vector2( 0.5, 0.5 )
+script = ExtResource( 3 )
+
+[node name="Label" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -50.0
+margin_top = -12.5
+margin_right = 50.0
+margin_bottom = 12.5
+theme = ExtResource( 1 )
+custom_fonts/font = SubResource( 1 )
+text = "200"
+align = 1
+valign = 1
+
+[node name="Tween" type="Tween" parent="."]
+
+[connection signal="tween_all_completed" from="Tween" to="." method="_on_Tween_tween_all_completed"]

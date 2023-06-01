@@ -1,0 +1,151 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://res/textures/side_wall.png" type="Texture" id=1]
+[ext_resource path="res://levels/tower.gd" type="Script" id=2]
+[ext_resource path="res://res/textures/wall_background.png" type="Texture" id=3]
+[ext_resource path="res://res/textures/boden.png" type="Texture" id=4]
+
+[sub_resource type="Animation" id=4]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("bg1:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.156863 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("bg2:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "fade1in"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("bg1:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.392157 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("bg2:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.392157 ) ]
+}
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 150.5, 10 )
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 12, 324 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 10, 324.5 )
+
+[node name="Tower" type="Node2D"]
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 366.0, 440.0 ],
+"_edit_vertical_guides_": [ 166.0, 252.0 ]
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 4 )
+anims/fade1in = SubResource( 5 )
+
+[node name="background" type="Sprite" parent="."]
+visible = false
+position = Vector2( 28, -146 )
+texture = ExtResource( 3 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 300, 800 )
+
+[node name="bg1" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0.156863 )
+position = Vector2( 160, 320 )
+
+[node name="bg2" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 160, 320 )
+
+[node name="floor" type="StaticBody2D" parent="." groups=["virtual_gravity"]]
+z_index = 4
+collision_layer = 3
+collision_mask = 3
+
+[node name="Sprite" type="Sprite" parent="floor"]
+position = Vector2( 176, 608 )
+scale = Vector2( 0.986667, 1 )
+texture = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="floor"]
+position = Vector2( 177.5, 592 )
+shape = SubResource( 3 )
+
+[node name="wall_left" type="StaticBody2D" parent="."]
+position = Vector2( -3, 8 )
+collision_layer = 3
+collision_mask = 3
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="wall_left"]
+position = Vector2( 0, -300 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 64, 2000 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall_left"]
+position = Vector2( 20, 316 )
+shape = SubResource( 1 )
+
+[node name="wall_right" type="StaticBody2D" parent="."]
+position = Vector2( -9, 0 )
+collision_layer = 3
+collision_mask = 3
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="wall_right"]
+position = Vector2( 336, -300 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 64, 2000 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall_right"]
+position = Vector2( 346, 316.5 )
+shape = SubResource( 2 )

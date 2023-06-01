@@ -1,0 +1,70 @@
+[gd_resource type="Theme" load_steps=11 format=2]
+
+[ext_resource path="res://res/fonts/Freaky Witches.ttf" type="DynamicFontData" id=1]
+
+[sub_resource type="DynamicFont" id=2]
+size = 25
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=10]
+bg_color = Color( 0.0784314, 0.258824, 0.0117647, 1 )
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id=4]
+content_margin_left = 5.0
+content_margin_right = 5.0
+content_margin_top = 6.0
+content_margin_bottom = 2.0
+bg_color = Color( 0.215686, 0.360784, 0.0941176, 1 )
+border_color = Color( 0.101961, 0.215686, 0.0352941, 1 )
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id=9]
+bg_color = Color( 0.0784314, 0.258824, 0.0117647, 1 )
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="DynamicFont" id=8]
+size = 20
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=7]
+
+[sub_resource type="DynamicFont" id=6]
+size = 20
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=11]
+size = 25
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.419608, 0.145098, 0.443137, 1 )
+
+[resource]
+Button/fonts/font = SubResource( 2 )
+Button/styles/hover = SubResource( 10 )
+Button/styles/normal = SubResource( 4 )
+Button/styles/pressed = SubResource( 9 )
+CheckButton/fonts/font = SubResource( 8 )
+CheckButton/styles/normal = SubResource( 7 )
+Label/colors/font_color = Color( 1, 1, 1, 1 )
+Label/colors/font_color_shadow = Color( 0, 0, 0, 0 )
+Label/colors/font_outline_modulate = Color( 1, 1, 1, 1 )
+Label/constants/line_spacing = 3
+Label/constants/shadow_as_outline = 0
+Label/constants/shadow_offset_x = 1
+Label/constants/shadow_offset_y = 1
+Label/fonts/font = SubResource( 6 )
+LineEdit/fonts/font = SubResource( 11 )
+PopupDialog/styles/panel = SubResource( 3 )
+WindowDialog/fonts/title_font = SubResource( 2 )

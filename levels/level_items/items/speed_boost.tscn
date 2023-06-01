@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://levels/level_items/items_animated_sprite.tres" type="SpriteFrames" id=1]
+[ext_resource path="res://levels/level_items/items/speed_boost.gd" type="Script" id=2]
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 7.0
+
+[node name="speed_bost" type="Area2D"]
+collision_layer = 8
+collision_mask = 8
+script = ExtResource( 2 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+scale = Vector2( 0.8, 0.8 )
+frames = ExtResource( 1 )
+animation = "speed"
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 2 )
+
+[connection signal="body_entered" from="." to="." method="_on_speed_bost_body_entered"]

@@ -1,0 +1,61 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://levels/level_items/platforms/Platform.gd" type="Script" id=1]
+[ext_resource path="res://res/textures/platform.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 29, 2 )
+
+[sub_resource type="GDScript" id=4]
+script/source = "extends Area2D
+
+func _on_Area2D_body_entered(body):
+	if body == Global.player:
+		#Global.highscore = Global.highscore + 1
+		Achievements.add_climbed_platform(1)
+		# ToDo: Workaround because disable still triggers this
+		$CollisionShape2D.queue_free()
+"
+
+[sub_resource type="LineShape2D" id=3]
+normal = Vector2( 0, 1 )
+
+[sub_resource type="OccluderPolygon2D" id=5]
+cull_mode = 1
+polygon = PoolVector2Array( 59, 14, 58, 0, 1, 0, 1, 13 )
+
+[node name="platform" type="KinematicBody2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 29, 6.75 )
+scale = Vector2( 0.226415, 0.226562 )
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 29, 3 )
+shape = SubResource( 2 )
+one_way_collision = true
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+script = SubResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 24, 0 )
+scale = Vector2( 5, 1 )
+shape = SubResource( 3 )
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource( 5 )
+
+[node name="ItemSpace" type="Node2D" parent="."]
+position = Vector2( 29, -10 )
+
+[node name="Tween" type="Tween" parent="."]
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_Area2D_body_entered"]
+[connection signal="tween_completed" from="Tween" to="." method="_on_Tween_tween_completed"]

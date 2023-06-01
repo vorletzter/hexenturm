@@ -1,0 +1,69 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://screens/Overlay.gd" type="Script" id=2]
+[ext_resource path="res://res/themes/theme.tres" type="Theme" id=3]
+[ext_resource path="res://screens/TextureProgress.gd" type="Script" id=4]
+[ext_resource path="res://res/fonts/Freaky Witches.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://res/textures/heart_bar_full_16x64.png" type="Texture" id=6]
+[ext_resource path="res://res/textures/heart_bar_empty_16x64.png" type="Texture" id=7]
+
+[sub_resource type="DynamicFont" id=3]
+size = 30
+font_data = ExtResource( 5 )
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Label
+
+func _process(delta):
+	text = str(Achievements.score)
+"
+
+[node name="Overlay" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Text_Emitter" type="Position2D" parent="."]
+position = Vector2( 170, 593 )
+z_index = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+margin_left = 45.0
+margin_top = 16.0
+margin_right = 302.0
+margin_bottom = 49.0
+theme = ExtResource( 3 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+margin_right = 257.0
+margin_bottom = 33.0
+theme = ExtResource( 3 )
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer"]
+margin_right = 90.0
+margin_bottom = 33.0
+custom_fonts/font = SubResource( 3 )
+text = "Score: "
+
+[node name="Label2" type="Label" parent="MarginContainer/HBoxContainer"]
+margin_left = 94.0
+margin_right = 136.0
+margin_bottom = 33.0
+custom_fonts/font = SubResource( 3 )
+text = "000"
+script = SubResource( 1 )
+
+[node name="item_destination" type="Position2D" parent="."]
+position = Vector2( 57, 26 )
+
+[node name="TextureProgress" type="TextureProgress" parent="."]
+margin_left = 193.0
+margin_top = 16.0
+margin_right = 312.0
+margin_bottom = 45.0
+max_value = 4.0
+value = 1.0
+texture_under = ExtResource( 7 )
+texture_progress = ExtResource( 6 )
+nine_patch_stretch = true
+script = ExtResource( 4 )
+
+[connection signal="tree_exiting" from="." to="." method="_on_Overlay_tree_exiting"]

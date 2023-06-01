@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://levels/tower.tscn" type="PackedScene" id=2]
+[ext_resource path="res://levels/level_items/hexe.tscn" type="PackedScene" id=3]
+
+[node name="MainGame" type="Node2D"]
+position = Vector2( 80, 64 )
+
+[node name="Tower" parent="." instance=ExtResource( 2 )]
+
+[node name="Hexe" parent="." instance=ExtResource( 3 )]
+show_behind_parent = true
+__meta__ = {
+"_edit_lock_": true
+}

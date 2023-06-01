@@ -1,0 +1,147 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "ItemBase",
+"class": "Coin",
+"language": "GDScript",
+"path": "res://levels/level_items/items/coin.gd"
+}, {
+"base": "ItemBase",
+"class": "FallingCoin",
+"language": "GDScript",
+"path": "res://levels/level_items/items/coinrain/falling_coin.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Fox",
+"language": "GDScript",
+"path": "res://my_player/Player.gd"
+}, {
+"base": "Area2D",
+"class": "ItemBase",
+"language": "GDScript",
+"path": "res://levels/level_items/items/item_base.gd"
+}, {
+"base": "ItemBase",
+"class": "JumpBoost",
+"language": "GDScript",
+"path": "res://levels/level_items/items/jump_boost.gd"
+}, {
+"base": "Resource",
+"class": "Logger",
+"language": "GDScript",
+"path": "res://scripts/Logger.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Player",
+"language": "GDScript",
+"path": "res://my_player/fox.gd"
+} ]
+_global_script_class_icons={
+"Coin": "",
+"FallingCoin": "",
+"Fox": "",
+"ItemBase": "",
+"JumpBoost": "",
+"Logger": "",
+"Player": ""
+}
+
+[application]
+
+config/name="hexenturm"
+run/main_scene="res://screens/StartScreen.tscn"
+config/icon="res://icon.png"
+
+[autoload]
+
+WebProfile="*res://scripts/profile.gd"
+Analytics="*res://scripts/analytics.gd"
+Global="*res://scripts/global.gd"
+Events="*res://scripts/events.gd"
+Achievements="*res://scripts/achievements.gd"
+
+[display]
+
+window/size/width=360
+window/size/height=640
+window/handheld/orientation="portrait"
+window/stretch/mode="2d"
+window/stretch/aspect="keep"
+
+[global]
+
+render=false
+clear=false
+default_c=false
+default=false
+android=false
+sdk=false
+export=false
+background=false
+default_clear_color=false
+eben=false
+
+[gui]
+
+common/drop_mouse_on_gui_input_disabled=true
+
+[input]
+
+jump={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+move_left={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777231,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+move_right={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777233,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+fire={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":81,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
+
+[layer_names]
+
+2d_render/layer_1="world"
+2d_render/layer_2="player"
+2d_render/layer_3="spells"
+2d_render/layer_4="items"
+2d_render/layer_5="creeps"
+2d_render/layer_6="platforms"
+2d_physics/layer_1="spell_world_collision"
+2d_physics/layer_2="player_world_collision"
+2d_physics/layer_3="spells"
+2d_physics/layer_4="items"
+2d_physics/layer_5="creeps"
+
+[physics]
+
+common/enable_pause_aware_picking=true
+
+[rendering]
+
+quality/driver/driver_name="GLES2"
+2d/snapping/use_gpu_pixel_snap=true
+vram_compression/import_etc=true
+environment/default_clear_color=Color( 0, 0, 0, 1 )
+environment/default_environment="res://default_env.tres"

@@ -1,0 +1,443 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://res/fonts/Freaky Witches.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://screens/StartScreen.gd" type="Script" id=2]
+[ext_resource path="res://res/themes/theme.tres" type="Theme" id=3]
+[ext_resource path="res://res/fonts/KGHAPPY.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://screens/SettingsDialog.gd" type="Script" id=6]
+[ext_resource path="res://screens/FristTimeDialog.gd" type="Script" id=7]
+
+[sub_resource type="DynamicFont" id=4]
+size = 70
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 30
+font_data = ExtResource( 1 )
+
+[sub_resource type="GDScript" id=2]
+script/source = "extends LineEdit
+
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	set_cursor_position(len(text))
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+"
+
+[sub_resource type="DynamicFont" id=1]
+size = 10
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 9
+font_data = ExtResource( 5 )
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 3 )
+script = ExtResource( 2 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+margin_bottom = 56.0
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+margin_right = 360.0
+margin_bottom = 76.0
+custom_fonts/font = SubResource( 4 )
+text = "Hexentanz"
+align = 1
+
+[node name="Label3" type="Label" parent="VBoxContainer"]
+margin_top = 80.0
+margin_right = 360.0
+margin_bottom = 113.0
+custom_fonts/font = SubResource( 5 )
+text = "Das Spiel für die "
+align = 1
+
+[node name="Control" type="Control" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -109.0
+margin_top = -97.0
+margin_right = -32.0
+margin_bottom = -71.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+margin_left = -13.0
+margin_top = 37.0
+margin_right = 231.0
+margin_bottom = 322.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+custom_constants/separation = 30
+alignment = 1
+
+[node name="Start" type="Button" parent="Control/VBoxContainer"]
+margin_right = 248.0
+margin_bottom = 36.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+text = "Start"
+
+[node name="Highscore" type="Button" parent="Control/VBoxContainer"]
+margin_top = 66.0
+margin_right = 248.0
+margin_bottom = 102.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+text = "Highscore"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control/VBoxContainer"]
+margin_top = 132.0
+margin_right = 248.0
+margin_bottom = 168.0
+size_flags_vertical = 3
+
+[node name="Kirmesteam" type="Button" parent="Control/VBoxContainer/HBoxContainer2"]
+margin_right = 144.0
+margin_bottom = 36.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Kirmesteam"
+
+[node name="Termine" type="Button" parent="Control/VBoxContainer/HBoxContainer2"]
+margin_left = 148.0
+margin_right = 248.0
+margin_bottom = 36.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Termine"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/VBoxContainer"]
+margin_top = 198.0
+margin_right = 248.0
+margin_bottom = 234.0
+size_flags_vertical = 3
+
+[node name="Hilfe" type="Button" parent="Control/VBoxContainer/HBoxContainer"]
+margin_right = 122.0
+margin_bottom = 36.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Hilfe"
+
+[node name="Einstellungen" type="Button" parent="Control/VBoxContainer/HBoxContainer"]
+margin_left = 126.0
+margin_right = 248.0
+margin_bottom = 36.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Settings"
+
+[node name="Quit" type="Button" parent="Control/VBoxContainer"]
+margin_top = 264.0
+margin_right = 248.0
+margin_bottom = 300.0
+text = "Beenden"
+
+[node name="Control2" type="Control" parent="."]
+anchor_left = 0.311
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -103.96
+margin_top = -527.0
+margin_right = -172.0
+margin_bottom = -527.0
+
+[node name="Label" type="Label" parent="Control2"]
+custom_colors/font_color = Color( 0.898039, 0.780392, 0.0980392, 1 )
+custom_fonts/font = SubResource( 5 )
+text = "Salatkirmes Oberelungen
+30. Juni - 3. Juli 2023"
+align = 1
+
+[node name="HelpDialog" type="AcceptDialog" parent="."]
+margin_left = 47.0
+margin_top = 91.0
+margin_right = 324.0
+margin_bottom = 548.0
+window_title = "Hilfe"
+dialog_text = "Auf den Bildschirmwischen / drücken um den Kirmesburschen zu bewegen.
+
+Den Geschossen der Hexe ausweichen! Die Hexegewinner immer!
+
+Mehrspieler: Jeder mit seinem Gerät. Verlierer zahlt die nächste Runde!"
+dialog_autowrap = true
+
+[node name="DatenschutzDialog" type="AcceptDialog" parent="."]
+margin_left = 32.0
+margin_top = 70.0
+margin_right = 336.0
+margin_bottom = 589.0
+window_title = "Datenschutz"
+
+[node name="Label2" type="Label" parent="DatenschutzDialog"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 296.0
+margin_bottom = 467.0
+text = "Dieses Spiel
+speichert nur Daten
+sofern der Benutzer auf
+den 'Senden' Knopf
+drückt!
+
+Dann wird der 
+Name und Highscore
+auf einen Server online
+gespeichert.
+Sonst werden keine Daten
+erhoben und gespeichert.
+
+Siehe Texte im 
+entsprechenden
+Appstore."
+align = 1
+
+[node name="UploadDialog" type="PopupDialog" parent="."]
+margin_left = 118.0
+margin_top = 258.0
+margin_right = 250.0
+margin_bottom = 310.0
+
+[node name="Label" type="Label" parent="UploadDialog"]
+margin_right = 40.0
+margin_bottom = 26.0
+text = "bitte warten
+lade hoch!"
+align = 1
+
+[node name="SettingsDialog" type="WindowDialog" parent="."]
+visible = true
+anchor_left = 0.054
+anchor_top = 0.075
+anchor_right = 0.054
+anchor_bottom = 0.075
+margin_left = 10.56
+margin_top = 110.0
+margin_right = 313.56
+margin_bottom = 338.0
+rect_pivot_offset = Vector2( 146, 197 )
+window_title = "Einstellungen"
+script = ExtResource( 6 )
+
+[node name="ProfileError" type="AcceptDialog" parent="SettingsDialog"]
+margin_left = 78.0
+margin_top = -93.0
+margin_right = 232.0
+margin_bottom = 325.0
+size_flags_horizontal = 3
+size_flags_vertical = 2
+window_title = "Warnung!"
+dialog_text = "Fehler im OnlineProfil.
+Konnte Profil und Einstellungen nicht laden.
+
+Es kann nicht gespeichert werden.
+Es werden keine Daten übertragen!"
+dialog_autowrap = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SettingsDialog"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -6.0
+
+[node name="NameContainer" type="VBoxContainer" parent="SettingsDialog/VBoxContainer"]
+margin_right = 283.0
+margin_bottom = 132.0
+size_flags_vertical = 3
+
+[node name="PlayerName_Desc" type="Label" parent="SettingsDialog/VBoxContainer/NameContainer"]
+margin_right = 283.0
+margin_bottom = 22.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "Dein Name:"
+align = 1
+
+[node name="PlayerName" type="LineEdit" parent="SettingsDialog/VBoxContainer/NameContainer"]
+margin_top = 26.0
+margin_right = 283.0
+margin_bottom = 64.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 3
+text = "Kirmesfan"
+align = 1
+max_length = 24
+clear_button_enabled = true
+placeholder_text = "Dein Name"
+script = SubResource( 2 )
+
+[node name="SaveSettingsButton" type="Button" parent="SettingsDialog/VBoxContainer/NameContainer"]
+margin_left = 56.0
+margin_top = 68.0
+margin_right = 226.0
+margin_bottom = 104.0
+size_flags_horizontal = 4
+size_flags_vertical = 2
+text = "Namen ändern"
+
+[node name="UploadScoreContainer" type="VBoxContainer" parent="SettingsDialog/VBoxContainer"]
+margin_top = 136.0
+margin_right = 283.0
+margin_bottom = 189.0
+size_flags_horizontal = 3
+size_flags_vertical = 9
+
+[node name="UploadScore" type="CheckButton" parent="SettingsDialog/VBoxContainer/UploadScoreContainer"]
+margin_right = 283.0
+margin_bottom = 32.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+pressed = true
+text = "Punkte teilen?"
+flat = true
+align = 1
+
+[node name="UploadScore_Desc" type="Label" parent="SettingsDialog/VBoxContainer/UploadScoreContainer"]
+margin_top = 36.0
+margin_right = 283.0
+margin_bottom = 53.0
+size_flags_horizontal = 9
+size_flags_vertical = 9
+custom_fonts/font = SubResource( 1 )
+text = "Teilt deinen Highscore mit anderen Spielern."
+align = 1
+autowrap = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SettingsDialog/VBoxContainer"]
+margin_top = 193.0
+margin_right = 283.0
+margin_bottom = 193.0
+size_flags_vertical = 9
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SettingsDialog/VBoxContainer"]
+margin_top = 197.0
+margin_right = 283.0
+margin_bottom = 212.0
+size_flags_horizontal = 3
+size_flags_vertical = 8
+
+[node name="UUID_desc" type="Label" parent="SettingsDialog/VBoxContainer/HBoxContainer"]
+margin_right = 27.0
+margin_bottom = 15.0
+size_flags_horizontal = 9
+size_flags_vertical = 2
+custom_colors/font_color = Color( 0.368627, 0.290196, 0.384314, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "UUID:"
+uppercase = true
+
+[node name="UUID" type="Label" parent="SettingsDialog/VBoxContainer/HBoxContainer"]
+margin_left = 31.0
+margin_right = 283.0
+margin_bottom = 15.0
+size_flags_horizontal = 3
+size_flags_vertical = 2
+custom_colors/font_color = Color( 0.368627, 0.290196, 0.384314, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "empty"
+autowrap = true
+
+[node name="FristTimeDialog" type="WindowDialog" parent="."]
+anchor_left = 0.054
+anchor_top = 0.075
+anchor_right = 0.054
+anchor_bottom = 0.075
+margin_left = 12.56
+margin_top = 123.0
+margin_right = 315.56
+margin_bottom = 271.0
+rect_pivot_offset = Vector2( 146, 197 )
+window_title = "Erster Start"
+script = ExtResource( 7 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="FristTimeDialog"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
+
+[node name="PlayerName_Desc" type="Label" parent="FristTimeDialog/VBoxContainer"]
+margin_right = 283.0
+margin_bottom = 22.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "Bitte gibt deinen Namen ein"
+align = 1
+
+[node name="PlayerName" type="LineEdit" parent="FristTimeDialog/VBoxContainer"]
+margin_top = 26.0
+margin_right = 283.0
+margin_bottom = 64.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 3
+text = "Kirmesfan"
+align = 1
+max_length = 30
+context_menu_enabled = false
+clear_button_enabled = true
+placeholder_text = "Dein Name"
+script = SubResource( 2 )
+
+[node name="SpaceWaster" type="VBoxContainer" parent="FristTimeDialog/VBoxContainer"]
+margin_top = 68.0
+margin_right = 283.0
+margin_bottom = 88.0
+size_flags_vertical = 3
+
+[node name="SaveFTSettingsButton" type="Button" parent="FristTimeDialog/VBoxContainer"]
+margin_left = 56.0
+margin_top = 92.0
+margin_right = 226.0
+margin_bottom = 128.0
+size_flags_horizontal = 4
+size_flags_vertical = 2
+text = "Namen ändern"
+
+[connection signal="pressed" from="Control/VBoxContainer/Start" to="." method="_on_Start_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/Highscore" to="." method="_on_Highscore_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/HBoxContainer2/Kirmesteam" to="." method="_on_Kirmesteam_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/HBoxContainer2/Termine" to="." method="_on_Termine_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/HBoxContainer/Hilfe" to="." method="_on_Hilfe_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/HBoxContainer/Einstellungen" to="." method="_on_Einstellungen_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/Quit" to="." method="_on_Quit_pressed"]
+[connection signal="about_to_show" from="SettingsDialog" to="SettingsDialog" method="_on_SettingsDialog_about_to_show"]
+[connection signal="popup_hide" from="SettingsDialog" to="SettingsDialog" method="_on_SettingsDialog_popup_hide"]
+[connection signal="pressed" from="SettingsDialog/VBoxContainer/NameContainer/SaveSettingsButton" to="SettingsDialog" method="_on_SaveSettingsButton_pressed"]
+[connection signal="toggled" from="SettingsDialog/VBoxContainer/UploadScoreContainer/UploadScore" to="SettingsDialog" method="_on_UploadScore_toggled"]
+[connection signal="about_to_show" from="FristTimeDialog" to="FristTimeDialog" method="_on_FristTimeDialog_about_to_show"]
+[connection signal="pressed" from="FristTimeDialog/VBoxContainer/SaveFTSettingsButton" to="FristTimeDialog" method="_on_SaveFTSettingsButton_pressed"]

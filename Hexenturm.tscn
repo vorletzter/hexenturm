@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://levels/tower.tscn" type="PackedScene" id=1]
+[ext_resource path="res://levels/level_items/hexe.tscn" type="PackedScene" id=2]
+[ext_resource path="res://screens/Overlay.tscn" type="PackedScene" id=3]
+[ext_resource path="res://my_player/Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Hexenturm.gd" type="Script" id=5]
+
+[node name="Hexenturm" type="Node2D"]
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 367.0 ],
+"_edit_vertical_guides_": [ 239.0 ]
+}
+
+[node name="Overlay" parent="." instance=ExtResource( 3 )]
+z_index = 2
+
+[node name="hexe" parent="." instance=ExtResource( 2 )]
+position = Vector2( 22, 51 )
+z_index = 1
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 176, 320 )
+current = true
+
+[node name="Tower" parent="." instance=ExtResource( 1 )]
+__meta__ = {
+"_edit_horizontal_guides_": [ 366.0 ],
+"_edit_vertical_guides_": [ 166.0 ]
+}
+
+[node name="Player" parent="." instance=ExtResource( 4 )]
+position = Vector2( 90, 514 )
+z_index = 2
+
+[connection signal="tree_entered" from="." to="." method="_on_Hexenturm_tree_entered"]
+
+[editable path="Tower"]
