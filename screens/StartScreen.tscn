@@ -78,10 +78,14 @@ margin_right = -32.0
 margin_bottom = -71.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control"]
-margin_left = -13.0
-margin_top = 37.0
-margin_right = 231.0
-margin_bottom = 322.0
+anchor_left = 0.714
+anchor_top = -0.648
+anchor_right = 0.714
+anchor_bottom = -0.648
+margin_left = -69.978
+margin_top = 19.848
+margin_right = 178.022
+margin_bottom = 326.848
 size_flags_horizontal = 2
 size_flags_vertical = 2
 custom_constants/separation = 30
@@ -89,30 +93,30 @@ alignment = 1
 
 [node name="Start" type="Button" parent="Control/VBoxContainer"]
 margin_right = 248.0
-margin_bottom = 36.0
+margin_bottom = 37.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
 text = "Start"
 
 [node name="Highscore" type="Button" parent="Control/VBoxContainer"]
-margin_top = 66.0
+margin_top = 67.0
 margin_right = 248.0
-margin_bottom = 102.0
+margin_bottom = 105.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
 text = "Highscore"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="Control/VBoxContainer"]
-margin_top = 132.0
+margin_top = 135.0
 margin_right = 248.0
-margin_bottom = 168.0
+margin_bottom = 173.0
 size_flags_vertical = 3
 
 [node name="Kirmesteam" type="Button" parent="Control/VBoxContainer/HBoxContainer2"]
 margin_right = 144.0
-margin_bottom = 36.0
+margin_bottom = 38.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
@@ -122,20 +126,20 @@ text = "Kirmesteam"
 [node name="Termine" type="Button" parent="Control/VBoxContainer/HBoxContainer2"]
 margin_left = 148.0
 margin_right = 248.0
-margin_bottom = 36.0
+margin_bottom = 38.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Termine"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/VBoxContainer"]
-margin_top = 198.0
+margin_top = 203.0
 margin_right = 248.0
-margin_bottom = 234.0
+margin_bottom = 241.0
 size_flags_vertical = 3
 
 [node name="Hilfe" type="Button" parent="Control/VBoxContainer/HBoxContainer"]
 margin_right = 122.0
-margin_bottom = 36.0
+margin_bottom = 38.0
 grow_horizontal = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -144,15 +148,15 @@ text = "Hilfe"
 [node name="Einstellungen" type="Button" parent="Control/VBoxContainer/HBoxContainer"]
 margin_left = 126.0
 margin_right = 248.0
-margin_bottom = 36.0
+margin_bottom = 38.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Settings"
 
 [node name="Quit" type="Button" parent="Control/VBoxContainer"]
-margin_top = 264.0
+margin_top = 271.0
 margin_right = 248.0
-margin_bottom = 300.0
+margin_bottom = 307.0
 text = "Beenden"
 
 [node name="Control2" type="Control" parent="."]
@@ -166,10 +170,24 @@ margin_right = -172.0
 margin_bottom = -527.0
 
 [node name="Label" type="Label" parent="Control2"]
+margin_left = -6.0
+margin_top = 8.0
+margin_right = 351.0
+margin_bottom = 77.0
 custom_colors/font_color = Color( 0.898039, 0.780392, 0.0980392, 1 )
 custom_fonts/font = SubResource( 5 )
 text = "Salatkirmes Oberelsungen
 30. Juni - 3. Juli 2023"
+align = 1
+
+[node name="Label" type="Label" parent="Control2/Label"]
+margin_top = 443.0
+margin_right = 360.0
+margin_bottom = 512.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 5 )
+text = "Ev. Kirchengemeinde
+Ober- & Niederelsungen"
 align = 1
 
 [node name="HelpDialog" type="AcceptDialog" parent="."]
