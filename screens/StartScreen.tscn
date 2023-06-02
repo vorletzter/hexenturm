@@ -168,7 +168,7 @@ margin_bottom = -527.0
 [node name="Label" type="Label" parent="Control2"]
 custom_colors/font_color = Color( 0.898039, 0.780392, 0.0980392, 1 )
 custom_fonts/font = SubResource( 5 )
-text = "Salatkirmes Oberelungen
+text = "Salatkirmes Oberelsungen
 30. Juni - 3. Juli 2023"
 align = 1
 
@@ -229,7 +229,6 @@ lade hoch!"
 align = 1
 
 [node name="SettingsDialog" type="WindowDialog" parent="."]
-visible = true
 anchor_left = 0.054
 anchor_top = 0.075
 anchor_right = 0.054

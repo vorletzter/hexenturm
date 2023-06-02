@@ -14,6 +14,9 @@ func _ready():
 	if Global.first_start:
 		Global.first_start = false
 		$FristTimeDialog.popup()
+	if OS.get_name() != "Android":
+		$Control/VBoxContainer/Quit.visible = false
+		
 
 func _on_Start_pressed():
 	Analytics.post(Analytics.verbs.CLICKED, "_on_Start_pressed")
