@@ -37,8 +37,9 @@ func _on_Hilfe_pressed():
 
 
 func _on_Datenschutz_pressed():
-	Analytics.post(Analytics.verbs.CLICKED, "_on_Datenschutz_pressed")
-	$DatenschutzDialog.popup()
+	#Analytics.post(Analytics.verbs.CLICKED, "_on_Datenschutz_pressed")
+	#$DatenschutzDialog.popup()
+	OS.shell_open("https://kircheone.de/neuigkeiten/der-hexentanz/")
 	pass # Replace with function body.
 
 

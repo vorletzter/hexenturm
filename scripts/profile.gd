@@ -17,6 +17,7 @@ var upload_score_enabled = true
 var analytics_enabled = true
 
 var network_error : int = 0
+var network_errors : int = 0
 
 #var NETWORK_ENABLED = false
 
@@ -71,6 +72,14 @@ func get_highscore(page: int = 1):
 	return result
 	#http_request.connect("request_completed", self, recFunction)
 	
+func get_player_scores(page: int = 1):
+	var http_request = HTTPRequest.new()
+	add_child(http_request)
+	http_request.request(PROFILE_URL+"/"+PROFILE_UUID+"/scores/"+"?page="+(str(page)), HEADERS, true, HTTPClient.METHOD_GET)
+	print (PROFILE_URL+PROFILE_UUID+"/scores/")
+	var result = yield(http_request, "request_completed")
+	return result
+	#http_request.connect("request_completed", self, recFunction)
 # 
 # Misc
 #
@@ -175,6 +184,10 @@ func _http_request_completed_recv_profile(_result, response_code, _headers, body
 				if analytics_enabled:
 					Analytics.init_analytics(PROFILE_UUID)
 					Analytics.analytics_enabled = true
+				if data_received.has('highscore'):
+					Achievements.highscore = data_received['highscore']
+				
+					
 				save_uuid_to_disk(PROFILE_UUID) #ToDo. As of now we safe the profil, even if we have loaded it bevor.
 			else:
 				l.log("Recieved invalid profile data: wrong entrys recieved.", l.levels.ERROR)
@@ -184,7 +197,12 @@ func _http_request_completed_recv_profile(_result, response_code, _headers, body
 			#push_warning("Could not parse json: profile.gd/_http_request_completed_recv_profile")
 	else:
 		l.log("API could not find profile. Creating a new one.", l.levels.INFO)
-		create_new_web_profile()
+		network_errors += 1
+		if network_errors < 3:
+			create_new_web_profile()
+		else:
+			l.log("To many network errors. Disabling WebProfile", l.levels.ERROR)
+		
 		#_post_data(PROFILE_URL, {}, "_http_request_completed_recv_profile", true)
 
 # 

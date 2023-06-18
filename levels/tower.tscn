@@ -1,9 +1,13 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://res/textures/side_wall.png" type="Texture" id=1]
 [ext_resource path="res://levels/tower.gd" type="Script" id=2]
 [ext_resource path="res://res/textures/wall_background.png" type="Texture" id=3]
 [ext_resource path="res://res/textures/boden.png" type="Texture" id=4]
+[ext_resource path="res://res/wischen.png" type="Texture" id=5]
+[ext_resource path="res://res/hilfe_items.png" type="Texture" id=6]
+[ext_resource path="res://res/hilfe_hexe.png" type="Texture" id=7]
+[ext_resource path="res://res/hilfe_spass.png" type="Texture" id=8]
 
 [sub_resource type="Animation" id=4]
 length = 0.001
@@ -75,6 +79,44 @@ __meta__ = {
 "_edit_horizontal_guides_": [ 366.0, 440.0 ],
 "_edit_vertical_guides_": [ 166.0, 252.0 ]
 }
+
+[node name="Hilfe_ctrl" type="Sprite" parent="." groups=["virtual_gravity"]]
+self_modulate = Color( 1, 1, 1, 0.392157 )
+show_behind_parent = true
+position = Vector2( -170, 40 )
+scale = Vector2( 0.572266, 0.701172 )
+z_index = 8
+z_as_relative = false
+texture = ExtResource( 5 )
+offset = Vector2( 625.584, 333.727 )
+
+[node name="hilfe_items" type="Sprite" parent="." groups=["virtual_gravity"]]
+self_modulate = Color( 1, 1, 1, 0.392157 )
+show_behind_parent = true
+position = Vector2( 1, -442 )
+scale = Vector2( 0.298902, 0.366231 )
+z_index = 8
+z_as_relative = false
+texture = ExtResource( 6 )
+offset = Vector2( 625.584, 333.727 )
+
+[node name="hilfe_hexe" type="Sprite" parent="." groups=["virtual_gravity"]]
+self_modulate = Color( 1, 1, 1, 0.392157 )
+show_behind_parent = true
+position = Vector2( -2, -940 )
+scale = Vector2( 0.298902, 0.366231 )
+z_index = 8
+texture = ExtResource( 7 )
+offset = Vector2( 625.584, 333.727 )
+
+[node name="hilfe_spass" type="Sprite" parent="." groups=["virtual_gravity"]]
+self_modulate = Color( 1, 1, 1, 0.392157 )
+show_behind_parent = true
+position = Vector2( -2, -1540 )
+scale = Vector2( 0.298902, 0.366231 )
+z_index = 8
+texture = ExtResource( 8 )
+offset = Vector2( 625.584, 333.727 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 4 )

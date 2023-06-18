@@ -1,7 +1,12 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://screens/scoreboard/Scoreboard.gd" type="Script" id=1]
 [ext_resource path="res://res/themes/theme.tres" type="Theme" id=2]
+[ext_resource path="res://res/fonts/Freaky Witches.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 25
+font_data = ExtResource( 3 )
 
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource( 1 )
@@ -16,50 +21,50 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource( 2 )
 
-[node name="Header" type="PanelContainer" parent="VBoxContainer"]
-margin_right = 359.0
-margin_bottom = 36.0
-
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Header"]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 352.0
-margin_bottom = 29.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Label" type="Label" parent="VBoxContainer/Header/HBoxContainer"]
-margin_right = 280.0
-margin_bottom = 22.0
-size_flags_horizontal = 3
-text = "Name"
-
-[node name="Label2" type="Label" parent="VBoxContainer/Header/HBoxContainer"]
-margin_left = 284.0
-margin_right = 345.0
-margin_bottom = 22.0
-size_flags_horizontal = 8
-size_flags_vertical = 0
-text = "Punkte"
-
 [node name="PanelContainer" type="PanelContainer" parent="VBoxContainer"]
-margin_top = 40.0
 margin_right = 359.0
 margin_bottom = 586.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/PanelContainer"]
+[node name="TabContainer" type="TabContainer" parent="VBoxContainer/PanelContainer"]
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 352.0
-margin_bottom = 539.0
+margin_bottom = 579.0
+custom_fonts/font = SubResource( 1 )
+
+[node name="Weltweit" type="ScrollContainer" parent="VBoxContainer/PanelContainer/TabContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 46.0
+margin_right = -4.0
+margin_bottom = -4.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+scroll_horizontal_enabled = false
+
+[node name="ScoreBox" type="VBoxContainer" parent="VBoxContainer/PanelContainer/TabContainer/Weltweit"]
+margin_right = 337.0
+margin_bottom = 522.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="ScoreBox" type="VBoxContainer" parent="VBoxContainer/PanelContainer/ScrollContainer"]
-margin_right = 345.0
-margin_bottom = 532.0
+[node name="Deine Punkte" type="ScrollContainer" parent="VBoxContainer/PanelContainer/TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 24.0
+margin_right = -4.0
+margin_bottom = -4.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ScoreBox" type="VBoxContainer" parent="VBoxContainer/PanelContainer/TabContainer/Deine Punkte"]
+margin_right = 337.0
+margin_bottom = 544.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -68,25 +73,13 @@ margin_top = 590.0
 margin_right = 359.0
 margin_bottom = 626.0
 
-[node name="Previous" type="Button" parent="VBoxContainer/HBoxContainer"]
-margin_right = 31.0
-margin_bottom = 36.0
-text = "<<<"
-
 [node name="Back" type="Button" parent="VBoxContainer/HBoxContainer"]
-margin_left = 35.0
-margin_right = 324.0
+margin_right = 359.0
 margin_bottom = 36.0
 size_flags_horizontal = 3
 size_flags_vertical = 8
 theme = ExtResource( 2 )
 text = "Hauptmenü"
-
-[node name="Next" type="Button" parent="VBoxContainer/HBoxContainer"]
-margin_left = 328.0
-margin_right = 359.0
-margin_bottom = 36.0
-text = ">>>"
 
 [node name="PopupDialog" type="PopupDialog" parent="."]
 anchor_left = 0.5
@@ -135,6 +128,4 @@ margin_right = 142.0
 margin_bottom = -10.0
 text = "Ungültige oder keine Daten."
 
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/Previous" to="." method="_on_Previous_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Back" to="." method="_on_Button_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/Next" to="." method="_on_Next_pressed"]

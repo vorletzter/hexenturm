@@ -122,7 +122,8 @@ func _item_collected(item):
 				lifes += 1
 				Events.emit_signal("health_changed", lifes)
 			else:
-				Global.adjust_difficulty(1)
+				pass
+				#Global.adjust_difficulty(1)
 		"jump_boost":
 			pass
 		"speed_boost":

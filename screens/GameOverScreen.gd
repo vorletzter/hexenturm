@@ -2,10 +2,14 @@ extends ColorRect
 
 onready var score = $MarginContainer/VBoxContainer/Punkte/HBoxContainer/Label
 onready var ebenen = $MarginContainer/VBoxContainer/Punkte/HBoxContainer2/Label
+onready var highscore = $MarginContainer/VBoxContainer/Punkte/HBoxContainer3/Label
 
 func _ready() -> void:
-	score.text = str(Achievements.highscore)
+	if Achievements.score > Achievements.highscore:
+		Achievements.highscore = Achievements.score
+	score.text = str(Achievements.score)
 	ebenen.text = str(Achievements.platforms_climbed)
+	highscore.text = str(Achievements.highscore)
 	$MarginContainer/VBoxContainer/VBoxContainer2/Coins/Label2.text = str(Achievements.item_stats["coin"])
 	$MarginContainer/VBoxContainer/VBoxContainer2/Herzen/Label2.text = str(Achievements.item_stats["heart"])
 	$MarginContainer/VBoxContainer/VBoxContainer2/JumpBoost/Label2.text = str(Achievements.item_stats["jump_boost"])

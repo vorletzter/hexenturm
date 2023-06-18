@@ -97,6 +97,8 @@ margin_bottom = 37.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
+theme = ExtResource( 3 )
+custom_colors/font_color = Color( 0.898039, 0.780392, 0.0980392, 1 )
 text = "Start"
 
 [node name="Highscore" type="Button" parent="Control/VBoxContainer"]
@@ -247,14 +249,15 @@ lade hoch!"
 align = 1
 
 [node name="SettingsDialog" type="WindowDialog" parent="."]
+visible = true
 anchor_left = 0.054
 anchor_top = 0.075
 anchor_right = 0.054
 anchor_bottom = 0.075
-margin_left = 10.56
-margin_top = 110.0
-margin_right = 313.56
-margin_bottom = 338.0
+margin_left = 15.56
+margin_top = 60.0
+margin_right = 318.56
+margin_bottom = 418.0
 rect_pivot_offset = Vector2( 146, 197 )
 window_title = "Einstellungen"
 script = ExtResource( 6 )
@@ -284,7 +287,7 @@ margin_bottom = -6.0
 
 [node name="NameContainer" type="VBoxContainer" parent="SettingsDialog/VBoxContainer"]
 margin_right = 283.0
-margin_bottom = 132.0
+margin_bottom = 262.0
 size_flags_vertical = 3
 
 [node name="PlayerName_Desc" type="Label" parent="SettingsDialog/VBoxContainer/NameContainer"]
@@ -312,18 +315,18 @@ placeholder_text = "Dein Name"
 script = SubResource( 2 )
 
 [node name="SaveSettingsButton" type="Button" parent="SettingsDialog/VBoxContainer/NameContainer"]
-margin_left = 56.0
+margin_left = 82.0
 margin_top = 68.0
-margin_right = 226.0
+margin_right = 201.0
 margin_bottom = 104.0
 size_flags_horizontal = 4
 size_flags_vertical = 2
-text = "Namen ändern"
+text = "Speichern"
 
 [node name="UploadScoreContainer" type="VBoxContainer" parent="SettingsDialog/VBoxContainer"]
-margin_top = 136.0
+margin_top = 266.0
 margin_right = 283.0
-margin_bottom = 189.0
+margin_bottom = 319.0
 size_flags_horizontal = 3
 size_flags_vertical = 9
 
@@ -351,15 +354,15 @@ align = 1
 autowrap = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="SettingsDialog/VBoxContainer"]
-margin_top = 193.0
+margin_top = 323.0
 margin_right = 283.0
-margin_bottom = 193.0
+margin_bottom = 323.0
 size_flags_vertical = 9
 
 [node name="HBoxContainer" type="HBoxContainer" parent="SettingsDialog/VBoxContainer"]
-margin_top = 197.0
+margin_top = 327.0
 margin_right = 283.0
-margin_bottom = 212.0
+margin_bottom = 342.0
 size_flags_horizontal = 3
 size_flags_vertical = 8
 

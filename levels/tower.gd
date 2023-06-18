@@ -1,13 +1,22 @@
 extends Node
 
 var level_backgrounds = [
-	{"name": "Kirche", "image": "res://res/backgrounds/kirche.png"},
-	{"name": "Friedof", "image": "res://res/backgrounds/friedhof.png"},
+	{"name": "Unsere Kirche", "image": "res://res/backgrounds/kirche.png"},
+	{"name": "Schild am Ortseingang", "image": "res://res/backgrounds/ortseingang.jpg"},
 	{"name": "Mehrzweckhalle", "image": "res://res/backgrounds/mzh.png"},
-	{"name": "FCO", "image": "res://res/backgrounds/fco.jpg"},
-	{"name": "Kita", "image": "res://res/backgrounds/kita.png"},
-	{"name": "Feuerwehr", "image": "res://res/backgrounds/feuerwehr.jpg"},
-	{"name": "Alte Schule", "image": "res://res/backgrounds/alteschule.png"},
+	{"name": "Fußballplatz FCO", "image": "res://res/backgrounds/fco.jpg"},
+	{"name": "Unsere Kita", "image": "res://res/backgrounds/kita.png"},
+	{"name": "Unsere Feuerwehr", "image": "res://res/backgrounds/feuerwehr.jpg"},
+	{"name": "Unser Dorfladen", "image": "res://res/backgrounds/dorfladen.jpg"},
+	{"name": "Das Kloppmans", "image": "res://res/backgrounds/kloppmans.jpg"},
+	{"name": "unsere Bücherrei", "image": "res://res/backgrounds/buecherei.jpg"},
+	{"name": "Unser Bushäuschen", "image": "res://res/backgrounds/bushaus.jpg"},
+	{"name": "Das Haus Abendfrieden", "image": "res://res/backgrounds/abendfrieden.jpg"},
+	{"name": "Unsere Arztpraxis", "image": "res://res/backgrounds/arzt.jpg"},
+	{"name": "unser Bahnhof", "image": "res://res/backgrounds/bahnhof.jpg"},
+	{"name": "Unser Friedof", "image": "res://res/backgrounds/friedhof.png"},
+	{"name": "Unsere alte Schule", "image": "res://res/backgrounds/alteschule.png"},
+	{"name": "Unser Briefkasten", "image": "res://res/backgrounds/briefkasten.jpg"},
 ]
 
 var platform = preload("res://levels/level_items/platforms/Platform.tscn")
@@ -61,13 +70,21 @@ func _ready() -> void:
 		i["texture"] = texture
 	_on_level_changed(0)
 	
+	if Achievements.highscore > 2000:
+		$Hilfe_ctrl.queue_free()
+		$hilfe_items.queue_free()
+		$hilfe_hexe.queue_free()
+		$hilfe_spass.queue_free()
+	
 func _on_level_changed(level: int) -> void:
-	print (level)
+	#print (level)
+	
 	#todo preload all textures to avoid stuttering	
 	if level >= level_backgrounds.size():
 		print ("no more textures :/")
 		return
 	var texture = level_backgrounds[level]["texture"]
+	Global.ui.push_lvlname(level_backgrounds[level]["name"])
 	if level % 2 == 1: #od
 		$bg2.texture = texture
 		var scaleWidth = projectResolution.x / $bg2.texture.get_size().x
@@ -84,22 +101,14 @@ func _on_level_changed(level: int) -> void:
 	pass
 
 func _on_difficulty_changed(difficulty) -> void:
-	match difficulty:
-		0:
-			pass
-		1: 
-			platform_spawn_pos += 200
-			pass
-		2: 
-			pass
 	
 	item_pool = [
 		{"roll_weight": 10, "acc_weight": 0, "item": preload("res://levels/level_items/items/coin.tscn"), "name": "Coin"},
-		{"roll_weight": 0.7, "acc_weight": 0, "item": preload("res://levels/level_items/items/heart.tscn"), "name": "Heart"},
+		{"roll_weight": 1, "acc_weight": 0, "item": preload("res://levels/level_items/items/heart.tscn"), "name": "Heart"},
 		#{"roll_weight": 2, "acc_weight": 0, "item": preload("res://levels/level_items/items/speed_boost.tscn"), "name": "SpeedBoost"},
 		{"roll_weight": 1, "acc_weight": 0, "item": preload("res://levels/level_items/items/jump_boost.tscn"), "name": "JumpBoost"},
 		{"roll_weight": 0.5, "acc_weight": 0, "item": preload("res://levels/level_items/items/coinrain/coinrain.tscn"), "name": "CoinRain"},
-		{"roll_weight": 12*(difficulty+1), "acc_weight": 0, "item": null, "name": "Dud"} # the dud
+		{"roll_weight": 2*(difficulty+1), "acc_weight": 0, "item": null, "name": "Dud"} # the dud
 		]
 	plaform_pool = [
 		{"roll_weight": 30/(difficulty+1), "acc_weight": 0, "item": preload("res://levels/level_items/platforms/Platform.tscn")},
