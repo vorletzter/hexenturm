@@ -23,7 +23,7 @@ var platform = preload("res://levels/level_items/platforms/Platform.tscn")
 var total_item_pool_weight : float 
 var item_pool = [
 	{"roll_weight": 10, "acc_weight": 0, "item": preload("res://levels/level_items/items/coin.tscn"), "name": "Coin"},
-	{"roll_weight": 4, "acc_weight": 0, "item": preload("res://levels/level_items/items/heart.tscn"), "name": "Herz"},
+	{"roll_weight": 0.2, "acc_weight": 0, "item": preload("res://levels/level_items/items/heart.tscn"), "name": "Herz"},
 	#{"roll_weight": 2, "acc_weight": 0, "item": preload("res://levels/level_items/items/speed_boost.tscn", "name": "SpeedBoost")},
 	{"roll_weight": 4, "acc_weight": 0, "item": preload("res://levels/level_items/items/jump_boost.tscn"), "name": "JumpBoost"},
 	{"roll_weight": 2, "acc_weight": 0, "item": preload("res://levels/level_items/items/coinrain/coinrain.tscn"), "name": "CoinRain"},
@@ -104,7 +104,7 @@ func _on_difficulty_changed(difficulty) -> void:
 	
 	item_pool = [
 		{"roll_weight": 10, "acc_weight": 0, "item": preload("res://levels/level_items/items/coin.tscn"), "name": "Coin"},
-		{"roll_weight": 1, "acc_weight": 0, "item": preload("res://levels/level_items/items/heart.tscn"), "name": "Heart"},
+		{"roll_weight": 0.2, "acc_weight": 0, "item": preload("res://levels/level_items/items/heart.tscn"), "name": "Heart"},
 		#{"roll_weight": 2, "acc_weight": 0, "item": preload("res://levels/level_items/items/speed_boost.tscn"), "name": "SpeedBoost"},
 		{"roll_weight": 1, "acc_weight": 0, "item": preload("res://levels/level_items/items/jump_boost.tscn"), "name": "JumpBoost"},
 		{"roll_weight": 0.5, "acc_weight": 0, "item": preload("res://levels/level_items/items/coinrain/coinrain.tscn"), "name": "CoinRain"},

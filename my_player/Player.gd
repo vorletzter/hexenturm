@@ -64,9 +64,11 @@ func _unhandled_input(event: InputEvent) -> void:
 func _physics_process(delta: float) -> void:
 		
 	if position.y > 650: # we left the screen
-		Analytics.post(Analytics.verbs.DIED, "fell down", str(Achievements.platforms_climbed))
-		Events.emit_signal("died")
-		change_state(States.DEAD)
+		if _state != States.DEAD:
+			Analytics.post(Analytics.verbs.DIED, "fell down", str(Achievements.platforms_climbed))
+			Events.emit_signal("died", "fell down")
+			# otherwise we technicaly die twice....
+			change_state(States.DEAD)
 		get_tree().change_scene("res://screens/GameOverScreen.tscn")
 	
 	# keyboard input
@@ -162,8 +164,9 @@ func _on_HitBox_body_entered(body: Node) -> void:
 		$AnimationPlayer.play("hit")
 		Events.emit_signal("health_changed", lifes)
 		Global.adjust_difficulty(-1)
+		Events.emit_signal("damaged", body.name)
 		if lifes < 1:
-			Events.emit_signal("died")
+			Events.emit_signal("died", "hit by " + str(body.name))
 			change_state(States.DEAD)
 			Analytics.post(Analytics.verbs.DIED, str(body.name), str(Achievements.platforms_climbed))
 			#get_tree().change_scene("res://screens/StartScreen.tscn")

@@ -25,7 +25,11 @@ var item_stats := {
 	"speed_boost" : 0,
 	"falling_coin": 0,
 	"score": 0,
-	"platforms_climbed": 0
+	"platforms_climbed": 0,
+	"hit_by_spell": 0,
+	"hit_by_seeking": 0,
+	"cause_of_death" : "",
+	"difficulty" : 0
 	 }
 	
 var platforms_climbed = 0
@@ -41,6 +45,8 @@ func _ready():
 	Events.connect("add_score", self, "_add_score")
 	Events.connect("item_collected", self, "_item_collected")
 	Events.connect("died", self, "_died")
+	Events.connect("damaged", self, "_damaged")
+	#Events.connect("difficulty_changed", self, "_diff_changed")
 
 func _new_game_started() -> void:
 	print ("game started")
@@ -48,10 +54,10 @@ func _new_game_started() -> void:
 		item_stats[key] = 0
 	score = 0
 	platforms_climbed = 0
-	difficulty = 0
-
+	#difficulty = 0
 	
-func _died() -> void:
+func _died(cause_of_death) -> void:
+	item_stats["cause_of_death"] = cause_of_death
 	for key in item_stats.keys():
 		prints(key, " -> ", item_stats[key])
 	
@@ -69,7 +75,14 @@ func _item_collected(item) -> void:
 			item_stats["coin_rain"] +=1
 		"falling_coin":
 			item_stats["falling_coin"] +=1
-			
+
+func _damaged(damaged_by) -> void:
+	match damaged_by:
+		"magic_spell":
+			item_stats["hit_by_spell"] +=1
+		"spell_seeking":
+			item_stats["hit_by_seeking"] +=1
+				
 func add_climbed_platform(num):
 	platforms_climbed += num
 	var _new_level : int = platforms_climbed / 50
@@ -78,6 +91,7 @@ func add_climbed_platform(num):
 		level = _new_level
 		Events.emit_signal("level_changed", level)
 		difficulty += 1
+		item_stats["difficulty"] = difficulty
 		#Events.emit_signal("new_level", level)
 		Global.adjust_difficulty(1)
 	score += num

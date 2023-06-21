@@ -9,7 +9,7 @@ var difficulty = 0
 onready var l = Logger.new("global.gd")
 
 func _ready():
-	#Events.connect("died", self, "_died")
+	#s inEvents.connect("died", self, "_died")
 	Events.connect("new_game", self, "on_new_game")
 	
 func _on_new_game() -> void:
